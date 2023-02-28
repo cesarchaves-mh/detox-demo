@@ -7,6 +7,21 @@ allprojects {
     }
 }
 
+android {
+    defaultConfig {
+        // Added these for running tests
+        testBuildType System.getProperty('testBuildType', 'debug')
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+    }
+}
+
+dependencies {
+    // Added testing dependencies
+    androidTestImplementation('com.wix:detox:+') { transitive = true }
+    androidTestImplementation 'junit:junit:4.12'
+}
+
+// this may not be needed
 buildscript {
     apply from: './rninfo.gradle'
 
@@ -36,12 +51,3 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
     }
 }
-
-android {
-    defaultConfig {
-        // Added these for running tests
-        testBuildType System.getProperty('testBuildType', 'debug')
-        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
-    }
-}
-
