@@ -37,4 +37,11 @@ buildscript {
     }
 }
 
+android {
+    defaultConfig {
+        // Added these for running tests
+        testBuildType System.getProperty('testBuildType', 'debug')
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+    }
+}
 
