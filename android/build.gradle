@@ -1,3 +1,12 @@
+allprojects {
+    repositories {
+        maven {
+            // All of the Detox artifacts are provided via the npm module
+            url "$rootDir/../node_modules/detox/Detox-android"
+        }
+    }
+}
+
 buildscript {
     apply from: './rninfo.gradle'
 
@@ -13,7 +22,7 @@ buildscript {
         buildToolsVersion = '31.0.0'
         compileSdkVersion = 31
         targetSdkVersion = 31
-        minSdkVersion = 21
+        minSdkVersion = 18
     }
 
     repositories {
@@ -28,16 +37,4 @@ buildscript {
     }
 }
 
-allprojects {
-    repositories {
-        mavenLocal()
-        mavenCentral()
-        google()
-        maven {
-            url "$rootDir/../node_modules/react-native/android"
-        }
-        maven {
-            url "$rootDir/../node_modules/detox/Detox-android"
-        }
-    }
-}
+
